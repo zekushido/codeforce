@@ -1,15 +1,15 @@
 n=int(input())
-b=list(map(int,input().split()))
+brd_nums=list(map(int,input().split()))
 m=int(input())
 for i in range(m):
-    x,y=map(int,input().split())
-    x-=1
-    left=y-1
-    right=b[x]-y
-    if x>0:
-        b[x-1]+=left
-    if x<n-1:
-        b[x+1]+=right
-    b[x]=0
-for i in b:
-    print(i)
+    xi,yi = map(int,input().split())
+    lt_brd=yi-1
+    rt_brd=brd_nums[xi-1]-yi
+    lt_ind=xi-2
+    if lt_ind>=0:
+        brd_nums[lt_ind] += lt_brd
+    if xi<n:
+        brd_nums[xi]+=rt_brd
+    brd_nums[xi-1]=0
+for i in range(n):
+    print(brd_nums[i])
